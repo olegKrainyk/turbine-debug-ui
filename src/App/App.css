@@ -1,0 +1,22 @@
+.App{
+    display: flex;
+    flex-direction: row;
+    height: 200vh;
+}
+
+.player{
+    display: flex;
+    width: 50%;
+    height: 70vh;
+}
+
+.info{
+    width: 50%;
+}
+
+.getURLbtn{
+    display: inline-block;
+    padding: 20px;
+    background-color: green;
+    cursor: pointer;
+}
