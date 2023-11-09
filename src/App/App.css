@@ -4,19 +4,25 @@
     height: 200vh;
 }
 
-.player{
+.players{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 50%;
-    height: 70vh;
+    height: 100vh;
 }
 
-.info{
-    width: 50%;
+.player-item{
+    margin-top: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 60%;
 }
 
-.getURLbtn{
-    display: inline-block;
-    padding: 20px;
-    background-color: green;
-    cursor: pointer;
+.inputs{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

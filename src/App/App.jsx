@@ -1,38 +1,54 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import './App.css'
 import ReactHlsPlayer from '@gumlet/react-hls-player'
-import IDinput from '../IDinput/IDinput';
+import IDinput from '../IDinput/IDinput'
+import DateTimeInput from '../DateInput/DateInput'
 
 function App() {
 
-  const [videoURL, setVideoURL] = useState(localStorage.getItem("videoURL") != null ? localStorage.getItem("videoURL") : '');
-  localStorage.setItem("videoURL", videoURL);
+  const [livevideoURL, setLiveVideoURL] = useState(localStorage.getItem("livevideoURL") != null ? localStorage.getItem("livevideoURL") : '');
+  localStorage.setItem("livevideoURL", livevideoURL);
+
+  const [historyVideoURL, setHistoryVideoURL] = useState(localStorage.getItem("historyvideoURL") != null ? localStorage.getItem("historyvideoURL") : '');
+  localStorage.setItem("historyvideoURL", historyVideoURL);
+
+  const start = '2023-11-06T14:40:00-05:00'
+  const end = '2023-11-06T14:42:00-05:00'
   
   return (
     <div className="App">
 
-      <div className='info'>
-          <IDinput setVideoURL={setVideoURL} />
-      </div>
-      
-      <div className='player'>
-        <ReactHlsPlayer
-          src={videoURL}
-          autoPlay={true}
-          controls={true}
-          width="100%"
-          height="100%"
-        />
+      <div className='inputs'>
+          <IDinput setLiveVideoURL={setLiveVideoURL} />
+
+          <DateTimeInput setHistoryVideoURL={setHistoryVideoURL} />
+
       </div>
 
-      <div className='player'>
-        <ReactHlsPlayer
-          src={'http://localhost:8000/streams/development_default_2/history.m3u8?start=2023-11-06T14%3A40%3A00-05%3A00&end=2023-11-06T14%3A45%3A00-05%3A00'}
-          autoPlay={true}
-          controls={true}
-          width="100%"
-          height="100%"
-        />
+      <div className='players'>
+      
+            <div className='realtime-player player-item'>
+              Realtime player by id
+              <ReactHlsPlayer
+                src={livevideoURL}
+                autoPlay={true}
+                controls={true}
+                width="100%"
+                height="100%"
+              />
+            </div>
+
+            <div className='history-player player-item'>
+              History player by id and time
+              <ReactHlsPlayer
+                src={`http://localhost:8000/streams/development_default_2/history.m3u8?start=${start}&end=${end}`}
+                autoPlay={true}
+                controls={true}
+                width="100%"
+                height="100%"
+              />
+            </div>
+
       </div>
 
     </div>

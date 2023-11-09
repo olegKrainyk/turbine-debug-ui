@@ -1,0 +1,19 @@
+.getURLbtn{
+    display: inline-block;
+    padding: 20px;
+    background-color: green;
+    cursor: pointer;
+}
+
+.id-input-block{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    width: 100%;
+    justify-content: left;
+}
+
+.id-input-block input{
+    width: 70%;
+    font-size: 25px;
+}
