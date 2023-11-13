@@ -11,9 +11,6 @@ function App() {
 
   const [historyVideoURL, setHistoryVideoURL] = useState(localStorage.getItem("historyvideoURL") != null ? localStorage.getItem("historyvideoURL") : '');
   localStorage.setItem("historyvideoURL", historyVideoURL);
-
-  const start = '2023-11-06T14:40:00-05:00'
-  const end = '2023-11-06T14:42:00-05:00'
   
   return (
     <div className="App">
@@ -41,7 +38,7 @@ function App() {
             <div className='history-player player-item'>
               History player by id and time
               <ReactHlsPlayer
-                src={`http://localhost:8000/streams/development_default_2/history.m3u8?start=${start}&end=${end}`}
+                src={historyVideoURL}
                 autoPlay={true}
                 controls={true}
                 width="100%"
